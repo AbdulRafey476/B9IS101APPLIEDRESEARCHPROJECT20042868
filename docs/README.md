@@ -9,16 +9,7 @@ This project bundle was prepared from your dissertation topic:
 - **Adaptation engine** with threshold + hysteresis logic
 - **Model manager** for runtime variant switching
 - **UART logger** for experiment data collection
-- **Meeting update notes** for presenting progress
 
-## Important note
-This is a **project-aligned starter implementation**, not a verified production firmware.
-You should present it as:
-- prototype code
-- framework skeleton
-- initial embedded implementation draft
-
-## Suggested talking points for your meeting
 1. The runtime monitors:
    - chip temperature
    - supply voltage
