@@ -37,5 +37,9 @@ float HardwareProfiler::readCpuLoad() {
 }
 
 float HardwareProfiler::movingAverage(float previous, float current, float alpha) {
+    // Exponential Moving Average (EMA).
+    // y=αxcurrent+(1−α)xprevious
+    // alpha = 0.2 20% new value 80% old value
+    // changes happen gradually, not abruptly
     return (alpha * current) + ((1.0f - alpha) * previous);
 }
