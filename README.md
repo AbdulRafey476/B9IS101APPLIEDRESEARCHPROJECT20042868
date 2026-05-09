@@ -190,11 +190,6 @@ Artefact/Project_Code/
 7. Open PuTTY or another serial monitor.
 8. Observe UART output.
 
-## GitHub Repository
-
-The complete source code and artefact files are available at:
-
-https://github.com/AbdulRafey476/B9IS101APPLIEDRESEARCHPROJECT20042868
 
 ## Submission Contents
 
