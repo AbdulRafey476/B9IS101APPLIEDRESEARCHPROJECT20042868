@@ -54,6 +54,26 @@ static float readVcc(void)
     return vcc;
 }
 
+static float readCpuLoad(void)
+{
+    static uint32_t last_tick = 0;
+    static float fake_load = 10.0f;
+
+    uint32_t now = HAL_GetTick();
+
+    if ((now - last_tick) >= 1000)
+    {
+        last_tick = now;
+
+        fake_load += 7.0f;
+
+        if (fake_load > 95.0f)
+            fake_load = 15.0f;
+    }
+
+    return fake_load;
+}
+
 void HardwareProfiler_Init(void)
 {
     state.temperature_c = 25.0f;
@@ -65,6 +85,7 @@ void HardwareProfiler_Sample(void)
 {
     float temp = readTemperatureSensor();
     float vcc = readVcc();
+    float cpu = readCpuLoad();
 
     state.temperature_c =
         movingAverage(state.temperature_c, temp, 0.2f);
@@ -72,6 +93,8 @@ void HardwareProfiler_Sample(void)
     state.vcc_volts =
         movingAverage(state.vcc_volts, vcc, 0.2f);
 
+    state.cpu_load_percent =
+        movingAverage(state.cpu_load_percent, cpu, 0.2f);
 }
 
 HardwareState HardwareProfiler_GetState(void)
