@@ -9,7 +9,18 @@ void AdaptationEngine_Init(void)
 
 ModelVariant AdaptationEngine_Decide(HardwareState hw)
 {
-    (void)hw;
+    if (hw.cpu_load_percent < 50.0f)
+    {
+        current = STANDARD_INT8;
+        return current;
+    }
+
+    if (hw.cpu_load_percent >= 50.0f)
+    {
+        current = PRUNED_VARIANT;
+        return current;
+    }
+
     current = STANDARD_INT8;
     return current;
 }
