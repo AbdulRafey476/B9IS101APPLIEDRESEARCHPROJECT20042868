@@ -1,10 +1,12 @@
 #include "adaptation_engine.h"
 
 static ModelVariant current = STANDARD_INT8;
+static int robustModeActive = 0;
 
 void AdaptationEngine_Init(void)
 {
     current = STANDARD_INT8;
+    robustModeActive = 0;
 }
 
 ModelVariant AdaptationEngine_Decide(HardwareState hw)
@@ -16,20 +18,37 @@ ModelVariant AdaptationEngine_Decide(HardwareState hw)
      * CPU observed: ~44–70%
      */
 
-    if ((hw.temperature_c > 66.8f) || 
-        (hw.cpu_load_percent > 64.0f) || 
-        (hw.vcc_volts < 2.98f))
+    // Robust / thermal / high-load condition
+    if ((hw.temperature_c > 66.8f) || (hw.cpu_load_percent > 64.0f) || (hw.vcc_volts < 2.98f))
+    {
+        robustModeActive = 1;
+        current = MIXED_PRECISION;
+        return current;
+    }
+
+    // Hysteresis exit from robust mode
+    if (robustModeActive &&
+        hw.temperature_c < 65.8f &&
+        hw.cpu_load_percent < 58.0f &&
+        hw.vcc_volts > 2.99f)
+    {
+        robustModeActive = 0;
+    }
+
+    if (robustModeActive)
     {
         current = MIXED_PRECISION;
         return current;
     }
 
+    // Low/normal load and stable condition
     if ((hw.cpu_load_percent < 50.0f) && (hw.vcc_volts >= 3.00f))
     {
         current = STANDARD_INT8;
         return current;
     }
 
+    // Moderate load / borderline voltage condition
     if ((hw.cpu_load_percent >= 50.0f) || (hw.vcc_volts < 3.01f))
     {
         current = PRUNED_VARIANT;
