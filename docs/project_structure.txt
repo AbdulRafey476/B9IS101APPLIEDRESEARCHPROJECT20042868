@@ -1,0 +1,16 @@
+hardware_adaptive_tinyml_project/
+├── include/
+│   ├── adaptation_engine.h
+│   ├── hardware_profile.h
+│   └── model_manager.h
+├── src/
+│   ├── adaptation_engine.cpp
+│   ├── hardware_profile.cpp
+│   ├── model_manager.cpp
+│   └── main.cpp
+├── scripts/
+│   └── uart_logger.py
+└── docs/
+    ├── meeting_update.md
+    ├── project_structure.txt
+    └── README.md
