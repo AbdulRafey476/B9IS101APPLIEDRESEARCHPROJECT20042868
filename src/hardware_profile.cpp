@@ -1,8 +1,7 @@
 #include "hardware_profile.h"
 
 // NOTE:
-// This is project-style demonstration code aligned with the dissertation.
-// ADC / DWT register reads are represented as placeholders so you can adapt
+// ADC / DWT register reads are represented as placeholders so can adapt
 // them inside STM32CubeIDE for your exact STM32L475 board.
 
 void HardwareProfiler::init() {

@@ -1,5 +1,7 @@
 #include "adaptation_engine.h"
 
+// decision-making brain of system
+
 AdaptationEngine::AdaptationEngine()
     : current_(ModelVariant::STANDARD_INT8), robustModeActive_(false) {}
 

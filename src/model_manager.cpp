@@ -1,7 +1,8 @@
 #include "model_manager.h"
 
+// Model storage + switching layer of system
 // Placeholder model blobs.
-// In your real implementation, replace with .tflite arrays converted to C headers.
+// In real implementation, replace with .tflite arrays converted to C headers.
 static const unsigned char g_standard_int8_model[] = {0x01, 0x02, 0x03};
 static const unsigned char g_pruned_model[] = {0x04, 0x05, 0x06};
 static const unsigned char g_mixed_precision_model[] = {0x07, 0x08, 0x09};
