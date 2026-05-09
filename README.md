@@ -35,7 +35,7 @@ The artefact is a complete STM32F407 firmware-based prototype. It includes:
 
 ## Folder Structure
 
-
+```text
 20042868_STM32F407_Hardware_Adaptive_TinyML/
 │
 ├── Artefact/
@@ -62,7 +62,7 @@ The artefact is a complete STM32F407 firmware-based prototype. It includes:
 │   └── 20042868_STM32F407_Hardware_Adaptive_TinyML_Presentation.pptx
 │
 └── README.md
-
+```
 
 ## Main Source Files
 
