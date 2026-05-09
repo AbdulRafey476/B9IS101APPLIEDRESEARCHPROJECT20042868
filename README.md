@@ -2,7 +2,7 @@
 
 **Student Name:** Abdul Rafey  
 **Student ID:** 20042868  
-**Programme:** MSc in Computing (Data Analytics/FinTech/Cloud Computing)  
+**Programme:** MSc in (Information Systems with Computing)
 **Institution:** Dublin Business School  
 **Year:** 2026  
 
